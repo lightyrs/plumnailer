@@ -13,7 +13,8 @@ module Plumnailer
     # Return a list of the absolute urls of all imgs in the document.
     def img_abs_urls(base_url=nil)
       img_srcs.map do |i|
-        URI(i).is_a?(URI::HTTP) ? i : URI.join(base_url || source_url, i)
+        u = URI(i)
+        u.is_a?(URI::HTTP) ? u : URI.join(base_url || source_url, i)
       end
     end
 
