@@ -28,7 +28,8 @@ Gem::Specification.new do |s|
      "lib/plumnailer/fetcher.rb",
      "lib/plumnailer/img_parser.rb",
      "lib/plumnailer/scorer.rb",
-     "lib/plumnailer/web_image.rb"
+     "lib/plumnailer/web_image.rb",
+     "plumnailer.gemspec"
   ]
   s.homepage = %q{http://github.com/mmb/plumnailer}
   s.rdoc_options = ["--charset=UTF-8"]
