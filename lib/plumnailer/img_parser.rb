@@ -2,7 +2,7 @@ require 'RMagick'
 
 require 'plumnailer'
 
-module PlumNailer
+module Plumnailer
 
   # Fetch image data urls, load into Magick::Image and set some additional
   # fields.
@@ -26,7 +26,7 @@ module PlumNailer
     def parse_one(img_url)
       img_data = fetcher.fetch(img_url)
       img = Magick::ImageList.new.from_blob(img_data).first.extend(
-        PlumNailer::WebImage)
+        Plumnailer::WebImage)
       img.source_url = img_url
       img
     end

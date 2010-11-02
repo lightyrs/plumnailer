@@ -1,4 +1,4 @@
-module PlumNailer
+module Plumnailer
 
   # Mixin for Magick::Image that adds url field.
   module WebImage

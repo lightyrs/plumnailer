@@ -1,13 +1,13 @@
-module PlumNailer
+module Plumnailer
 
   # Find the most representative image on a page.
   class Chooser
 
     def initialize
-      @fetcher = PlumNailer::Fetcher.new
-      @doc_parser = PlumNailer::DocParser.new
-      @img_parser = PlumNailer::ImgParser.new(fetcher)
-      @scorer = PlumNailer::Scorer.new
+      @fetcher = Plumnailer::Fetcher.new
+      @doc_parser = Plumnailer::DocParser.new
+      @img_parser = Plumnailer::ImgParser.new(fetcher)
+      @scorer = Plumnailer::Scorer.new
     end
 
     # Find the most representative image on a page.

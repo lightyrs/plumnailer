@@ -1,4 +1,4 @@
-module PlumNailer
+module Plumnailer
 
   # Give an image a score based on how representative of the document it is.
   class Scorer

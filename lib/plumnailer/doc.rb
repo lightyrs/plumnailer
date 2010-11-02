@@ -1,6 +1,6 @@
 require 'uri'
 
-module PlumNailer
+module Plumnailer
 
   # Nokogiri::HTML:Document mixin.
   module Doc

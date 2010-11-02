@@ -3,7 +3,7 @@ require 'fileutils'
 
 require 'plumnailer'
 
-module PlumNailer
+module Plumnailer
 
   # Fetch the contents of a url and cache result on filesystem.
   class CachingFetcher < Fetcher

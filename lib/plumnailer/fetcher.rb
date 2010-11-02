@@ -1,6 +1,6 @@
 require 'open-uri'
 
-module PlumNailer
+module Plumnailer
 
   # Fetch the contents of a url.
   class Fetcher

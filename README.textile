@@ -8,9 +8,9 @@ page. More sophisticated scoring coming soon.
 <code>
 require 'plumnailer'
 
-chooser = PlumNailer::Chooser.new
+chooser = Plumnailer::Chooser.new
 chooser.fetcher = chooser.img_parser.fetcher =
-  PlumNailer::CachingFetcher.new('/tmp/plumnailer-test')
+  Plumnailer::CachingFetcher.new('/tmp/plumnailer-test')
 
 choice = chooser.choose('http://urls.matthewm.boedicker.org/')
 puts choice.source_url
