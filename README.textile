@@ -1,0 +1,22 @@
+Score all images on a page according to how well they represent what the page
+is about and return the best one.
+
+Project is in an early stage and for now just picks the largest image on the
+page. More sophisticated scoring coming soon.
+
+<pre>
+<code>
+require 'plumnailer'
+
+chooser = PlumNailer::Chooser.new
+chooser.fetcher = chooser.img_parser.fetcher =
+  PlumNailer::CachingFetcher.new('/tmp/plumnailer-test')
+
+choice = chooser.choose('http://urls.matthewm.boedicker.org/')
+puts choice.source_url
+
+choice.resize_to_fill(64, 64).write('thumb.jpg')
+</code>
+</pre>
+
+Questions and comments: "matthewm@boedicker.org":mailto:matthewm@boedicker.org
