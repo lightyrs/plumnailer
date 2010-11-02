@@ -17,9 +17,9 @@ module Plumnailer
     # doc is optional and is included so entire document can be used to
     # calculate score.
     def score_one(img, doc=nil)
-      img.filesize
+      img.rows * img.columns
     end
 
   end
- 
+
 end
