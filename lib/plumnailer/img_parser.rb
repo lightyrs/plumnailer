@@ -25,7 +25,7 @@ module Plumnailer
     # additional fields.
     def parse_one(img_url)
       img_data = fetcher.fetch(img_url)
-      unless img_data.empty?
+      unless !img_data or img_data.empty?
         img = Magick::ImageList.new.from_blob(img_data).first.extend(
           Plumnailer::WebImage)
         img.source_url = img_url
