@@ -15,7 +15,7 @@ module Plumnailer
     # Parse image data from one or more urls.
     def parse(img_urls)
       if img_urls.respond_to? :map
-        img_urls.map { |i| parse_one i }
+        img_urls.map { |i| parse_one i }.compact
       else
         parse_one i
       end
@@ -25,10 +25,12 @@ module Plumnailer
     # additional fields.
     def parse_one(img_url)
       img_data = fetcher.fetch(img_url)
-      img = Magick::ImageList.new.from_blob(img_data).first.extend(
-        Plumnailer::WebImage)
-      img.source_url = img_url
-      img
+      unless img_data.empty?
+        img = Magick::ImageList.new.from_blob(img_data).first.extend(
+          Plumnailer::WebImage)
+        img.source_url = img_url
+        img
+      end
     end
 
     attr_accessor :fetcher
