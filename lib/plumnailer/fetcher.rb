@@ -6,7 +6,9 @@ module Plumnailer
   class Fetcher
 
     # Fetch the contents of a url.
-    def fetch(url); open(url) { |f| f.read }; end
+    def fetch(url)
+      open(url) { |f| f.read } if url.is_a?(URI::HTTP)
+    end
 
   end
  
