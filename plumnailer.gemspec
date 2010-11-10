@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matthew M. Boedicker"]
-  s.date = %q{2010-11-01}
+  s.date = %q{2010-11-09}
   s.description = %q{Choose the most representative image on an HTML page for use as a thumbnail}
   s.email = %q{matthewm@boedicker.org}
   s.extra_rdoc_files = [
@@ -26,10 +26,12 @@ Gem::Specification.new do |s|
      "lib/plumnailer/doc.rb",
      "lib/plumnailer/doc_parser.rb",
      "lib/plumnailer/fetcher.rb",
+     "lib/plumnailer/img_comparator.rb",
+     "lib/plumnailer/img_hostname_filter.rb",
      "lib/plumnailer/img_parser.rb",
-     "lib/plumnailer/scorer.rb",
      "lib/plumnailer/web_image.rb",
-     "plumnailer.gemspec"
+     "plumnailer.gemspec",
+     "test.rb"
   ]
   s.homepage = %q{http://github.com/mmb/plumnailer}
   s.rdoc_options = ["--charset=UTF-8"]
