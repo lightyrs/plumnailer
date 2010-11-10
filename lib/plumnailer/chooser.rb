@@ -8,7 +8,7 @@ module Plumnailer
       @doc_parser = Plumnailer::DocParser.new
       @img_url_filters = [Plumnailer::ImgHostnameFilter.new]
       @img_parser = Plumnailer::ImgParser.new(fetcher)
-      @scorer = Plumnailer::Scorer.new
+      @img_comparator = Plumnailer::ImgComparator
     end
 
     # Find the most representative image on a page.
@@ -25,8 +25,12 @@ module Plumnailer
       imgs = img_parser.parse(img_abs_urls)
 
       unless imgs.empty?
-        scores = scorer.score(imgs, doc)
-        imgs[scores.index(scores.max)]
+        imgs.each do |img|
+          # set source document on image so it can be used in comparator
+          img.doc = doc
+          img.extend(@img_comparator)
+        end
+        imgs.sort.first
       end
     end
 
@@ -34,7 +38,7 @@ module Plumnailer
     attr_accessor :doc_parser
     attr_accessor :img_url_filters
     attr_accessor :img_parser
-    attr_accessor :scorer
+    attr_accessor :img_comparator
 
   end
 
