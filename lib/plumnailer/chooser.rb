@@ -24,8 +24,10 @@ module Plumnailer
 
       imgs = img_parser.parse(img_abs_urls)
 
-      scores = scorer.score(imgs, doc)
-      imgs[scores.index(scores.max)]
+      unless imgs.empty?
+        scores = scorer.score(imgs, doc)
+        imgs[scores.index(scores.max)]
+      end
     end
 
     attr_accessor :fetcher
