@@ -5,7 +5,9 @@ module Plumnailer
 
     # Return true if this image url should not be considered.
     def reject?(img_url)
-      HostnameRejectPatterns.each { |re| return true if img_url.host[re] }
+      HostnameRejectPatterns.each do |re|
+        return true if img_url.host and img_url.host[re]
+      end
       false
     end
 
