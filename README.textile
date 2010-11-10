@@ -1,5 +1,5 @@
-Score all images on a page according to how well they represent what the page
-is about and return the best one.
+Compare all of the images on an HTML page and select the one that best
+represents what the page is about (for use as a thumbnail for the entire page).
 
 Project is in an early stage and for now just picks the largest image on the
 page. More sophisticated scoring coming soon.
@@ -9,6 +9,7 @@ page. More sophisticated scoring coming soon.
 require 'plumnailer'
 
 chooser = Plumnailer::Chooser.new
+# caching fetcher is good for testing
 chooser.fetcher = chooser.img_parser.fetcher =
   Plumnailer::CachingFetcher.new('/tmp/plumnailer-test')
 
