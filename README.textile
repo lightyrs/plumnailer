@@ -1,9 +1,6 @@
 Compare all of the images on an HTML page and select the one that best
 represents what the page is about (for use as a thumbnail for the entire page).
 
-Project is in an early stage and for now just picks the largest image on the
-page. More sophisticated scoring coming soon.
-
 <pre>
 <code>
 require 'plumnailer'
