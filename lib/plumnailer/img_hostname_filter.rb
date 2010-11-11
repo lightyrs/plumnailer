@@ -14,6 +14,7 @@ module Plumnailer
     HostnameRejectPatterns = [
       %r{^ad\.doubleclick\.net$},
       %r{^b\.scorecardresearch\.com$},
+      %r{^pixel\.quantserve\.com$},
       ]
 
   end
