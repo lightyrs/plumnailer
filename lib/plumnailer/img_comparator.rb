@@ -5,7 +5,15 @@ module Plumnailer
 
     def <=> other
       # can use doc here to take source page into account
-      other.rows * other.columns <=> rows * columns
+
+      # square of smallest dimension
+      result = ([other.rows, other.columns].min ** 2) <=>
+        ([rows, columns].min ** 2)
+      # if still tied use number of colors
+      if result == 0
+        result = other.number_colors <=> number_colors
+      end
+      result
     end
 
   end
