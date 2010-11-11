@@ -14,8 +14,12 @@ module Plumnailer
 
     # Parse image data from one or more urls.
     def parse(img_urls)
-      if img_urls.respond_to? :map
-        img_urls.map { |i| parse_one i }.compact
+      if img_urls.respond_to? :inject
+        cache = {}
+        img_urls.inject([]) do |memo,u|
+          # nil values should be cached
+          memo << (cache.include?(u) ? cache[u] : (cache[u] = parse_one(u)))
+        end.compact
       else
         parse_one i
       end
