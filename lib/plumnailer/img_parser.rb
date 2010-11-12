@@ -25,12 +25,12 @@ module Plumnailer
       end
     end
 
-    # Fetch image data from a url, load into Magick::Image and set some
+    # Fetch image data from a url, load into Magick::ImageList and set some
     # additional fields.
     def parse_one(img_url)
       img_data = fetcher.fetch(img_url)
       unless !img_data or img_data.empty?
-        img = Magick::ImageList.new.from_blob(img_data).first.extend(
+        img = Magick::ImageList.new.from_blob(img_data).extend(
           Plumnailer::WebImage)
         img.source_url = img_url
         img

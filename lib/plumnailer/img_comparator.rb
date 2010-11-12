@@ -1,6 +1,6 @@
 module Plumnailer
 
-  # Mixin for Magick::Image that adds a comparator for sorting by relevance.
+  # Mixin for Magick::ImageList that adds a comparator for sorting by relevance.
   module ImgComparator
 
     def <=> other
