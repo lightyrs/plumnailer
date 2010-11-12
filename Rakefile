@@ -9,9 +9,9 @@ begin
     gemspec.authors = ['Matthew M. Boedicker']
 
     %w{
-      nokogiri 1.4.3.1
-      rmagick 2.13.1
-      }.each_slice(2) { |g,v| gemspec.add_dependency(g, ">= #{v}") }
+      nokogiri >= 1.4.3.1
+      rmagick >= 1.15.14
+      }.each_slice(3) { |g,o,v| gemspec.add_dependency(g, "#{o} #{v}") }
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
