@@ -6,7 +6,7 @@ module Plumnailer
     def initialize
       @fetcher = Plumnailer::Fetcher.new
       @doc_parser = Plumnailer::DocParser.new
-      @img_url_filters = [Plumnailer::ImgHostnameFilter.new]
+      @img_url_filters = [Plumnailer::ImgUrlFilter.new]
       @img_parser = Plumnailer::ImgParser.new(fetcher)
       @img_comparator = Plumnailer::ImgComparator
     end
