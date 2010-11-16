@@ -14,7 +14,7 @@ module Plumnailer
 
     # Parse image data from one or more urls.
     def parse(img_urls)
-      if img_urls.respond_to? :inject
+      if img_urls.respond_to?(:inject)
         cache = {}
         img_urls.inject([]) do |memo,u|
           # nil values should be cached
@@ -29,7 +29,7 @@ module Plumnailer
     # additional fields.
     def parse_one(img_url)
       img_data = fetcher.fetch(img_url)
-      unless !img_data or img_data.empty?
+      unless not img_data or img_data.empty?
         img = Magick::ImageList.new.from_blob(img_data).extend(
           Plumnailer::WebImage)
         img.source_url = img_url

@@ -28,7 +28,7 @@ module Plumnailer
         imgs.each do |img|
           # set source document on image so it can be used in comparator
           img.doc = doc
-          img.extend(@img_comparator)
+          img.extend @img_comparator
         end
         imgs.sort.first
       end

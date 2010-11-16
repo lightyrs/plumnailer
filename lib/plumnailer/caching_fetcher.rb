@@ -10,7 +10,7 @@ module Plumnailer
 
     def initialize(cache_dir)
       @cache_dir = cache_dir
-      FileUtils.mkdir_p(cache_dir)
+      FileUtils.mkdir_p cache_dir
     end
 
     # Fetch the contents of a url and cache result on filesystem.

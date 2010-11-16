@@ -6,7 +6,7 @@ module Plumnailer
     # Return true if this image url should not be considered.
     def reject?(img_url)
       ImgUrlPatterns.each do |re|
-        return true if img_url and img_url.to_s[re]
+        return true  if img_url and img_url.to_s[re]
       end
       false
     end
