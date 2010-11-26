@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matthew M. Boedicker"]
-  s.date = %q{2010-11-22}
+  s.date = %q{2010-11-26}
   s.description = %q{Choose the most representative image on an HTML page for use as a thumbnail}
   s.email = %q{matthewm@boedicker.org}
   s.extra_rdoc_files = [
@@ -44,15 +44,18 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<net-http-persistent>, ["~> 1.0"])
       s.add_runtime_dependency(%q<nokogiri>, [">= 1.4.3.1"])
       s.add_runtime_dependency(%q<rmagick>, [">= 1.15.14"])
       s.add_development_dependency(%q<sinatra>, [">= 1.1.0"])
     else
+      s.add_dependency(%q<net-http-persistent>, ["~> 1.0"])
       s.add_dependency(%q<nokogiri>, [">= 1.4.3.1"])
       s.add_dependency(%q<rmagick>, [">= 1.15.14"])
       s.add_dependency(%q<sinatra>, [">= 1.1.0"])
     end
   else
+    s.add_dependency(%q<net-http-persistent>, ["~> 1.0"])
     s.add_dependency(%q<nokogiri>, [">= 1.4.3.1"])
     s.add_dependency(%q<rmagick>, [">= 1.15.14"])
     s.add_dependency(%q<sinatra>, [">= 1.1.0"])

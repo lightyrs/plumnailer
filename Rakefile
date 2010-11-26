@@ -10,6 +10,7 @@ begin
     gemspec.license = 'MIT'
 
     %w{
+      net-http-persistent ~> 1.0
       nokogiri >= 1.4.3.1
       rmagick >= 1.15.14
       }.each_slice(3) { |g,o,v| gemspec.add_dependency(g, "#{o} #{v}") }

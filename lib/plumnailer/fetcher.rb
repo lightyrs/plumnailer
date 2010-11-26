@@ -1,17 +1,37 @@
-require 'open-uri'
+require 'net/http/persistent'
 
 module Plumnailer
 
   # Fetch the contents of a url.
   class Fetcher
 
+    # User agent to send with requests.
     UserAgent = 'plumnailer (http://github.com/mmb/plumnailer)'
 
+    # Follow this many chained HTTP redirects at most.
+    RedirectLimit = 3
+
     # Fetch the contents of a url.
-    def fetch(url)
+    #
+    # * url - url to fetch, can be string or URI
+    # * orig_url - passed in from redirects
+    # * redirect_count - the number of redirects so far
+    def fetch(url, orig_url=nil, redirect_count=0)
+      if redirect_count > RedirectLimit
+        raise ArgumentError,
+          "too many redirects (#{redirect_count}) for #{orig_url}"
+      end
+
       uri = url.is_a?(URI) ? url : URI(url)
       if uri.is_a?(URI::HTTP)
-        open(uri, 'User-Agent' => UserAgent) { |f| f.read }
+        http = Net::HTTP::Persistent.new
+        resp = http.request(uri)
+        case resp
+          when Net::HTTPSuccess; resp.body
+          when Net::HTTPRedirection; fetch(resp['location'], orig_url || url,
+            redirect_count + 1)
+          else resp.error!
+        end
       end
     end
 
