@@ -24,7 +24,7 @@ module Plumnailer
 
       uri = url.is_a?(URI) ? url : URI(url)
       if uri.is_a?(URI::HTTP)
-        http = Net::HTTP::Persistent.new
+        http = Net::HTTP::Persistent.new('plumnailer')
         resp = http.request(uri)
         case resp
           when Net::HTTPSuccess; resp.body
