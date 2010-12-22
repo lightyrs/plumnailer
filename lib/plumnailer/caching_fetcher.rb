@@ -14,7 +14,7 @@ module Plumnailer
     end
 
     # Fetch the contents of a url and cache result on filesystem.
-    def fetch(url)
+    def fetch(url, orig_url=nil, redirect_count=0)
       cache_file = File.join(cache_dir, CGI.escape(url.to_s))
 
       if File.exists?(cache_file)
