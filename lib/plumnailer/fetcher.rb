@@ -5,8 +5,9 @@ module Plumnailer
   # Fetch the contents of a url.
   class Fetcher
 
-    # User agent to send with requests.
-    UserAgent = 'plumnailer (http://github.com/mmb/plumnailer)'
+    def initialize
+      @user_agent = 'plumnailer (http://github.com/mmb/plumnailer)'
+    end
 
     # Follow this many chained HTTP redirects at most.
     RedirectLimit = 3
@@ -25,6 +26,7 @@ module Plumnailer
       uri = url.is_a?(URI) ? url : URI(url)
       if uri.is_a?(URI::HTTP)
         http = Net::HTTP::Persistent.new('plumnailer')
+        http.headers['User-Agent'] = user_agent
         resp = http.request(uri)
         case resp
           when Net::HTTPSuccess; resp.body
@@ -35,6 +37,7 @@ module Plumnailer
       end
     end
 
+    attr_accessor :user_agent
   end
  
 end
