@@ -6,7 +6,7 @@ module Plumnailer
   class Fetcher
 
     def initialize
-      @user_agent = 'plumnailer (http://github.com/mmb/plumnailer)'
+      @user_agent = 'plumnailer (https://github.com/mmb/plumnailer)'
     end
 
     # Follow this many chained HTTP redirects at most.
