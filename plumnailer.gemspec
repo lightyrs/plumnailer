@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'plumnailer'
-  s.version = '0.1.2'
+  s.version = '0.1.3'
   s.summary = 'Choose the most representative image on an HTML page for use as a thumbnail'
   s.description = s.summary
   s.homepage = 'https://github.com/mmb/plumnailer'
