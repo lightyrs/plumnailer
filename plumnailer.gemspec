@@ -10,8 +10,6 @@ Gem::Specification.new do |s|
   s.email = %w{matthewm@boedicker.org}
   s.license = 'MIT'
 
-  s.required_rubygems_version = '>= 1.3.6'
-
   %w{
     net-http-persistent > 0
     nokogiri > 0
