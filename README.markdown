@@ -4,8 +4,7 @@ thumbnail to represent the entire page.
 
 Basic usage:
 
-<pre>
-<code>
+```ruby
 require 'plumnailer'
 
 chooser = Plumnailer::Chooser.new
@@ -13,13 +12,11 @@ choice = chooser.choose('http://urls.matthewm.boedicker.org/')
 puts choice.source_url
 
 choice.resize_to_fill(64, 64).write('thumb.jpg')
-</code>
-</pre>
+```
 
 Alternate fetcher that caches images on local filesystem:
 
-<pre>
-<code>
+```ruby
 require 'plumnailer'
 
 chooser = Plumnailer::Chooser.new
@@ -28,20 +25,17 @@ chooser.fetcher = chooser.img_parser.fetcher =
 
 choice = chooser.choose('http://urls.matthewm.boedicker.org/')
 puts choice.source_url
-</code>
-</pre>
+```
 
 Top five images:
 
-<pre>
-<code>
+```ruby
 require 'plumnailer'
 
 chooser = Plumnailer::Chooser.new
 chooser.choose('http://urls.matthewm.boedicker.org/', :top => 5).each do |i|
   puts i.source_url
 end
-</code>
-</pre>
+```
 
-Questions and comments: "matthewm@boedicker.org":mailto:matthewm@boedicker.org
+Questions and comments: <matthewm@boedicker.org>
