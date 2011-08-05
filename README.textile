@@ -1,19 +1,46 @@
-Compare all of the images on an HTML page and select the one that best
-represents what the page is about (for use as a thumbnail for the entire page).
+Compare all of the images on an HTML page and sort them according to how well
+they represent what the page is about. The top image could be used as a
+thumbnail to represent the entire page.
+
+Basic usage:
 
 <pre>
 <code>
 require 'plumnailer'
 
 chooser = Plumnailer::Chooser.new
-# caching fetcher is good for testing
+choice = chooser.choose('http://urls.matthewm.boedicker.org/')
+puts choice.source_url
+
+choice.resize_to_fill(64, 64).write('thumb.jpg')
+</code>
+</pre>
+
+Alternate fetcher that caches images on local filesystem:
+
+<pre>
+<code>
+require 'plumnailer'
+
+chooser = Plumnailer::Chooser.new
 chooser.fetcher = chooser.img_parser.fetcher =
   Plumnailer::CachingFetcher.new('/tmp/plumnailer-test')
 
 choice = chooser.choose('http://urls.matthewm.boedicker.org/')
 puts choice.source_url
+</code>
+</pre>
 
-choice.resize_to_fill(64, 64).write('thumb.jpg')
+Top five images:
+
+<pre>
+<code>
+require 'plumnailer'
+
+chooser = Plumnailer::Chooser.new
+chooser.choose('http://urls.matthewm.boedicker.org/', :top => 5).each do |i|
+  puts i.source_url
+end
 </code>
 </pre>
 
