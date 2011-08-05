@@ -12,7 +12,12 @@ module Plumnailer
     end
 
     # Find the most representative image on a page.
-    def choose(url)
+    # 
+    # Return the best image or nil if no suitable images are found.
+    #
+    # If options[:top] is passed in return up to the top n images. If this
+    # option is used the the method will always return of list of size 0 to n.
+    def choose(url, options={})
       doc_string = fetcher.fetch(url)
 
       doc = doc_parser.parse(doc_string, url)
@@ -24,14 +29,15 @@ module Plumnailer
 
       imgs = img_parser.parse(img_abs_urls)
 
-      unless imgs.empty?
-        imgs.each do |img|
-          # set source document on image so it can be used in comparator
-          img.doc = doc
-          img.extend @img_comparator
-        end
-        imgs.sort.first
+      imgs.each do |img|
+        # set source document on image so it can be used in comparator
+        img.doc = doc
+        img.extend @img_comparator
       end
+
+      imgs.sort!
+
+      options[:top] ? imgs.first(options[:top]) : imgs.first
     end
 
     attr_accessor :fetcher
